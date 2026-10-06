@@ -1,6 +1,5 @@
-export default function Button(props){
+import './Button.css';
 
-    console.log(props);
-    
-    return <button>{props.children}</button>
+export default function Button({ type = 'primary', size = 'md', children }) {
+  return <button className={`btn btn-${type} btn-${size}`}>{children}</button>;
 }

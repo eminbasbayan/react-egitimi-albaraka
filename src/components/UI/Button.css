@@ -1,0 +1,18 @@
+.btn {
+  padding: 8px;
+}
+
+.btn-primary {
+  background-color: blue;
+  color: white;
+}
+
+.btn-danger {
+  background-color: red;
+  color: white;
+}
+
+.btn-lg {
+  padding: 12px;
+  font-size: 24px;
+}

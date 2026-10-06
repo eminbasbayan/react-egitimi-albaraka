@@ -5,8 +5,10 @@ import Button from './components/UI/Button';
 function App() {
   return (
     <Fragment>
-      <Button>Ürün Ekle</Button>
-      <Button>
+      <Button type="primary" size="lg">Ürün Ekle</Button>
+      <br />
+      <br />
+      <Button type="danger">
         <b>Ürünü Sil</b>
       </Button>
       <Products />
