@@ -1,8 +1,12 @@
 import { productsData } from '../data/productsData';
 import ProductItem from './ProductItem';
-import "./Products.css";
+import './Products.css';
 
 function Products() {
+  function titleFunction(titleState) {
+    console.log(titleState);
+  }
+
   return (
     <div className="products">
       <h2>Products Component</h2>
@@ -11,6 +15,7 @@ function Products() {
         {productsData.map((product) => {
           return (
             <ProductItem
+              titleFunction={titleFunction}
               key={product.id}
               imageUrl={product.imageURL}
               title={product.title}
