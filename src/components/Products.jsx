@@ -36,6 +36,8 @@ function Products() {
               imageURL={product.imageURL}
               title={product.title}
               price={product.price}
+              id={product.id}
+              setProducts={setProducts}
             />
           );
         })}

@@ -1,8 +1,10 @@
 import './ProductItem.css';
 
 function ProductItem(props) {
-  function handleTitleChange() {
-    props.titleFunction('Şapka');
+  function handleDeleteItem() {
+    props.setProducts((prevProducts) =>
+      prevProducts.filter((item) => item.id !== props.id),
+    );
   }
 
   return (
@@ -12,7 +14,7 @@ function ProductItem(props) {
       <div className="product-item-info">
         <b className="product-item-title">{props.title}</b>
         <span>{props.price}₺</span>
-        <button onClick={handleTitleChange}>Title Değiştir</button>
+        <button onClick={handleDeleteItem}>Ürünü Sil</button>
       </div>
     </div>
   );
