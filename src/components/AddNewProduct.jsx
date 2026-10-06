@@ -2,47 +2,46 @@ import { useState } from 'react';
 import './AddNewProduct.css';
 
 function AddNewProduct() {
-  const [title, setTitle] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-  const [price, setPrice] = useState('');
+  const [product, setProduct] = useState({
+    title: '',
+    imageUrl: '',
+    price: '',
+  });
 
-  function handleTitleChange(event) {
-    setTitle(event.target.value);
-  }
+  function handleChange({ target: { name, value } }) {
+    // const { name, value } = target;
 
-  function handleImageUrlChange(event) {
-    setImageUrl(event.target.value);
-  }
-
-  function handlePriceChange(event) {
-    setPrice(event.target.value);
+    setProduct({ ...product, [name]: value });
   }
 
   return (
     <div className="add-new-product">
       <form>
         <label>
-          <b>Ürün ismi: {title}</b>
+          <b>Ürün ismi: {product.title}</b>
           <input
             type="text"
-            onChange={handleTitleChange}
+            onChange={handleChange}
             placeholder="Bir ürün ismi giriniz!"
+            name="title"
           />
         </label>
         <label>
-          <b>Ürün görsel: {imageUrl}</b>
+          <b>Ürün görsel: {product.imageUrl}</b>
           <input
             type="text"
-            onChange={handleImageUrlChange}
+            onChange={handleChange}
             placeholder="Bir ürün görsel giriniz!"
+            name="imageUrl"
           />
         </label>
         <label>
-          <b>Ürün fiyatı: {price} </b>
+          <b>Ürün fiyatı: {product.price} </b>
           <input
             type="number"
-            onChange={handlePriceChange}
+            onChange={handleChange}
             placeholder="Bir ürün fiyatı giriniz!"
+            name="price"
           />
         </label>
       </form>
