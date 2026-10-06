@@ -26,7 +26,7 @@ function AddNewProduct(props) {
     );
 
     if (!isValid) {
-      window.alert('Inputlar boş geçilemez!');
+      props.onShowModal();
       return;
     }
 
