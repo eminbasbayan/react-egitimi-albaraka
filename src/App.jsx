@@ -1,16 +1,11 @@
 import { Fragment } from 'react';
 import Products from './components/Products';
-import Button from './components/UI/Button';
+import AddNewProduct from './components/AddNewProduct';
 
 function App() {
   return (
     <Fragment>
-      <Button type="primary" size="lg">Ürün Ekle</Button>
-      <br />
-      <br />
-      <Button type="danger">
-        <b>Ürünü Sil</b>
-      </Button>
+        <AddNewProduct />
       <Products />
     </Fragment>
   );
