@@ -4,8 +4,6 @@ import './ProductItem.css';
 function ProductItem(props) {
   const [title, setTitle] = useState(props.title);
 
-  console.log(props);
-
   function handleTitleChange() {
     setTitle('Şapka');
   }
