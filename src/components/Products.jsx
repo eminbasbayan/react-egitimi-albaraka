@@ -1,10 +1,20 @@
+import { useState } from 'react';
 import { productsData } from '../data/productsData';
 import ProductItem from './ProductItem';
 import './Products.css';
 
 function Products() {
+  const [products, setProducts] = useState(productsData);
+
   function titleFunction(titleState) {
-    console.log(titleState);
+    const titleStateChange = products.map((product) => {
+      return {
+        ...product,
+        title: titleState,
+      };
+    });
+
+    setProducts(titleStateChange);
   }
 
   return (
@@ -12,7 +22,7 @@ function Products() {
       <h2>Products Component</h2>
 
       <div className="product-items">
-        {productsData.map((product) => {
+        {products.map((product) => {
           return (
             <ProductItem
               titleFunction={titleFunction}
