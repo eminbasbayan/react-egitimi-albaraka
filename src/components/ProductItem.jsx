@@ -13,7 +13,7 @@ function ProductItem(props) {
       <img src={props.imageUrl} alt="Çanta Görseli" />
 
       <div className="product-item-info">
-        <b>{title}</b>
+        <b className='product-item-title'>{title}</b>
         <span>{props.price}₺</span>
         <button onClick={handleTitleChange}>Title Değiştir</button>
       </div>
