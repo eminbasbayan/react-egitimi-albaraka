@@ -1,7 +1,8 @@
+import { createPortal } from 'react-dom';
 import './Modal.css';
 
 function Modal({ onCloseModal, title, description }) {
-  return (
+  return createPortal(
     <div className="modal fade">
       <div className="modal-overlay" onClick={() => onCloseModal()}></div>
       <div className="modal-dialog">
@@ -33,7 +34,8 @@ function Modal({ onCloseModal, title, description }) {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.getElementById('portal'),
   );
 }
 
