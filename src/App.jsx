@@ -1,11 +1,9 @@
 import { Fragment } from 'react';
-import Products from './components/Products';
-import AddNewProduct from './components/AddNewProduct';
+import Products from './components/Products'; 
 
 function App() {
   return (
     <Fragment>
-        <AddNewProduct />
       <Products />
     </Fragment>
   );

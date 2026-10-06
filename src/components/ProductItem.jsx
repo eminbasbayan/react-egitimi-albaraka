@@ -7,7 +7,7 @@ function ProductItem(props) {
 
   return (
     <div className="product-item">
-      <img src={props.imageUrl} alt="Çanta Görseli" />
+      <img src={props.imageURL} alt="Çanta Görseli" />
 
       <div className="product-item-info">
         <b className="product-item-title">{props.title}</b>

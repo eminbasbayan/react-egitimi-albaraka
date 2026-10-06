@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import './AddNewProduct.css';
+import Button from './UI/Button';
 
-function AddNewProduct() {
+function AddNewProduct(props) {
   const [product, setProduct] = useState({
     title: '',
-    imageUrl: '',
+    imageURL: '',
     price: '',
   });
 
@@ -14,9 +15,21 @@ function AddNewProduct() {
     setProduct({ ...product, [name]: value });
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const newProduct = {
+      ...product,
+      id: Math.random(),
+      price: Number(product.price),
+    };
+
+    props.handleNewProduct(newProduct);
+  }
+
   return (
     <div className="add-new-product">
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>
           <b>Ürün ismi: {product.title}</b>
           <input
@@ -27,12 +40,12 @@ function AddNewProduct() {
           />
         </label>
         <label>
-          <b>Ürün görsel: {product.imageUrl}</b>
+          <b>Ürün görsel: {product.imageURL}</b>
           <input
             type="text"
             onChange={handleChange}
             placeholder="Bir ürün görsel giriniz!"
-            name="imageUrl"
+            name="imageURL"
           />
         </label>
         <label>
@@ -44,6 +57,8 @@ function AddNewProduct() {
             name="price"
           />
         </label>
+
+        <Button>Yeni Ürün Ekle</Button>
       </form>
     </div>
   );
