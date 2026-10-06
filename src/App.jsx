@@ -1,6 +1,5 @@
 import React from 'react';
 import ProductItem from './components/ProductItem';
-import Counter from './components/Counter';
 
 function App() {
   const image =
@@ -10,7 +9,6 @@ function App() {
 
   return (
     <React.Fragment>
-      <Counter />
       <ProductItem imageUrl={image} title={title} price={price} />
     </React.Fragment>
   );
