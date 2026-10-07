@@ -1,32 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
-  const [title, setTitle] = useState('Şapka');
+  const [isLoading, setIsLoading] = useState(false);
 
   function fetchUsers() {
+    setIsLoading(true);
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((res) => res.json())
-      .then((data) => setUsers(data));
+      .then((data) => setUsers(data))
+      .catch((error) => console.log(error))
+      .finally(() => setIsLoading(false));
   }
 
-  /* fetchUsers(); */
-
-  useEffect(() => {
+  /*  useEffect(() => {
     fetchUsers();
-  }, []);
-
-  useEffect(() => {
-    fetchUsers();
-  }, [title]);
-
-  console.log('component render oldu!');
+  }, []); */
 
   return (
     <div>
-      {/*  <button onClick={fetchUsers}>Kullanıcıları Getir!</button> */}
-      <button onClick={() => setTitle('Çanta')}>Title Değiştir!</button>
-      <b>{title}</b>
+      <button onClick={fetchUsers}>Kullanıcıları Getir!</button>
+      {isLoading && 'Yükleniyor!'}
       <ul className="user-list">
         {users.map((user) => (
           <li key={user.id}>Name: {user.name}</li>
