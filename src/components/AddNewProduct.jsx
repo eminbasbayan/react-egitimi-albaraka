@@ -31,6 +31,7 @@ function AddNewProduct(props) {
       ...product,
       id: Math.random(),
       price: Number(product.price),
+      image: product.imageURL
     };
 
     props.handleNewProduct(newProduct);

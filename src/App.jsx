@@ -1,12 +1,14 @@
+import { ToastContainer } from 'react-toastify';
 import { Fragment } from 'react';
-/* import Products from './components/Products'; */
-import UserList from './components/UserList';
+import Products from './components/Products';
 
 function App() {
   return (
     <Fragment>
-      <UserList />
-     {/*  <Products /> */}
+      {/* <UserList /> */}
+      <Products />
+
+      <ToastContainer />
     </Fragment>
   );
 }

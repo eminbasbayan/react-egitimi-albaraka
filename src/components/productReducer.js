@@ -1,7 +1,5 @@
-import { productsData } from "../data/productsData";
-
 const initialState = {
-  products: productsData,
+  products: [],
   isShowModal: false,
 };
 

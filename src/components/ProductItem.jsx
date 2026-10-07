@@ -1,8 +1,17 @@
+import { toast } from 'react-toastify';
 import './ProductItem.css';
+import Button from './UI/Button';
 
 function ProductItem(props) {
   function handleDeleteItem() {
-    props.setProducts(props.id);
+    if (window.confirm('Silmek istediğinize emin misiniz?')) {
+      props.setProducts(props.id);
+
+      toast.success('Ürün başarıyla silindi!', {
+        autoClose: 3000,
+        position: 'bottom-center',
+      });
+    }
   }
 
   return (
@@ -12,7 +21,9 @@ function ProductItem(props) {
       <div className="product-item-info">
         <b className="product-item-title">{props.title}</b>
         <span>{props.price}₺</span>
-        <button onClick={handleDeleteItem}>Ürünü Sil</button>
+        <Button type="danger" onClick={handleDeleteItem}>
+          Ürünü Sil
+        </Button>
       </div>
     </div>
   );
