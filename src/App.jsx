@@ -1,13 +1,14 @@
-import { ToastContainer } from 'react-toastify';
 import { Fragment } from 'react';
-import Products from './components/Products';
+import { createBrowserRouter, RouterProvider } from 'react-router';
+import { ToastContainer } from 'react-toastify';
+import HomePage from './pages/HomePage';
+
+const router = createBrowserRouter([{ path: '/', Component: HomePage }]);
 
 function App() {
   return (
     <Fragment>
-      {/* <UserList /> */}
-      <Products />
-
+      <RouterProvider router={router} />
       <ToastContainer />
     </Fragment>
   );
