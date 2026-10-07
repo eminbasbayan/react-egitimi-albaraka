@@ -2,9 +2,7 @@ import './ProductItem.css';
 
 function ProductItem(props) {
   function handleDeleteItem() {
-    props.setProducts((prevProducts) =>
-      prevProducts.filter((item) => item.id !== props.id),
-    );
+    props.setProducts(props.id);
   }
 
   return (

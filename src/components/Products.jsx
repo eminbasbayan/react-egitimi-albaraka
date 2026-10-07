@@ -1,27 +1,18 @@
-import { useState } from 'react';
-import { productsData } from '../data/productsData';
+import { useReducer } from 'react';
 import ProductItem from './ProductItem';
 import AddNewProduct from './AddNewProduct';
-import './Products.css';
+import { initialState, reducerFunction } from './productReducer';
 import Modal from './UI/Modal';
+import './Products.css';
 
 function Products() {
-  const [products, setProducts] = useState(productsData);
-  const [isShowModal, setIsShowModal] = useState(false);
-
-  function titleFunction(titleState) {
-    const titleStateChange = products.map((product) => {
-      return {
-        ...product,
-        title: titleState,
-      };
-    });
-
-    setProducts(titleStateChange);
-  }
+  const [state, dispatch] = useReducer(reducerFunction, initialState);
 
   function handleNewProduct(newProduct) {
-    setProducts([newProduct, ...products]);
+    dispatch({
+      type: 'ADD_NEW_PRODUCT',
+      newProducts: [newProduct, ...state.products],
+    });
   }
 
   return (
@@ -29,28 +20,29 @@ function Products() {
       <h2>Products Component</h2>
       <AddNewProduct
         handleNewProduct={handleNewProduct}
-        onShowModal={() => setIsShowModal(true)}
+        onShowModal={() => dispatch({ type: 'OPEN_MODAL' })}
       />
 
       <div className="product-items">
-        {products.map((product) => {
+        {state.products.map((product) => {
           return (
             <ProductItem
-              titleFunction={titleFunction}
               key={product.id}
               imageURL={product.imageURL}
               title={product.title}
               price={product.price}
               id={product.id}
-              setProducts={setProducts}
+              setProducts={(productId) =>
+                dispatch({ type: 'REMOVE_PRODUCT', productId })
+              }
             />
           );
         })}
       </div>
 
-      {isShowModal && (
+      {state.isShowModal && (
         <Modal
-          onCloseModal={() => setIsShowModal(false)}
+          onCloseModal={() => dispatch({ type: 'CLOSE_MODAL' })}
           title="Inputlar boş geçilemez!"
           description="Lütfen inputları doldurunuz!"
         />
