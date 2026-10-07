@@ -1,4 +1,5 @@
-import {  NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { BsCart } from 'react-icons/bs';
 
 const Header = () => {
   return (
@@ -33,11 +34,14 @@ const Header = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    `hover:text-red-400 ${isActive && 'text-red-400'}`
+                    `hover:text-red-400 flex items-center gap-1 relative ${isActive && 'text-red-400'}`
                   }
                   to="/cart"
                 >
-                  Cart
+                  <BsCart />
+                  <span className="text-xs absolute bg-red-600 text-white w-3 h-3 flex items-center justify-center rounded-full text-center top-[-8px] right-[-6px]">
+                    0
+                  </span>
                 </NavLink>
               </li>
             </ul>
