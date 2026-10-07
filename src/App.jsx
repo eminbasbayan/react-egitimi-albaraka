@@ -7,6 +7,7 @@ import CartPage from './pages/CartPage';
 import MainLayout from './layouts/MainLayout';
 import AdminLayout from './layouts/AdminLayout';
 import AdminDashboard from './pages/admin/AdminDashboard';
+import NotFoundPage from './pages/NotFoundPage';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
     path: '/admin',
     Component: AdminLayout,
     children: [{ path: 'dashboard', Component: AdminDashboard }],
+  },
+  {
+    path: '*',
+    Component: NotFoundPage,
   },
 ]);
 
