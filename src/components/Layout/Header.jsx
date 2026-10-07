@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -10,14 +10,35 @@ const Header = () => {
         <div className="flex items-center gap-4 ">
           <nav>
             <ul className="flex items-center gap-4">
-              <li className="hover:text-red-400">
-                <Link to="/">Home</Link>
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    `hover:text-red-400 ${isActive && 'text-red-400'}`
+                  }
+                  to="/"
+                >
+                  Home
+                </NavLink>
               </li>
-              <li className="hover:text-red-400">
-                <Link to="/products">Products</Link>
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    `hover:text-red-400 ${isActive && 'text-red-400'}`
+                  }
+                  to="/products"
+                >
+                  Products
+                </NavLink>
               </li>
-              <li className="hover:text-red-400">
-                <Link to="/cart">Cart</Link>
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    `hover:text-red-400 ${isActive && 'text-red-400'}`
+                  }
+                  to="/cart"
+                >
+                  Cart
+                </NavLink>
               </li>
             </ul>
           </nav>
