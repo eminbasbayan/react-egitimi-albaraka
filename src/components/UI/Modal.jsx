@@ -1,7 +1,17 @@
 import { createPortal } from 'react-dom';
 import './Modal.css';
+import { useEffect } from 'react';
 
 function Modal({ onCloseModal, title, description }) {
+  useEffect(() => {
+    console.log("component DOM'da ilk kez render olduğunda!");
+
+    // clean-up function
+    return () => {
+      console.log("component DOM'dan kaldırıldığında!");
+    };
+  }, []);
+
   return createPortal(
     <div className="modal fade">
       <div className="modal-overlay" onClick={() => onCloseModal()}></div>

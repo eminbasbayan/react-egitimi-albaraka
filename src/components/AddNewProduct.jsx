@@ -18,9 +18,6 @@ function AddNewProduct(props) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    console.log(Object.keys(product));
-    console.log(Object.values(product));
-
     const isValid = Object.values(product).every(
       (value) => value.trim() !== '',
     );
