@@ -8,6 +8,8 @@ import MainLayout from './layouts/MainLayout';
 import AdminLayout from './layouts/AdminLayout';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import NotFoundPage from './pages/NotFoundPage';
+import LoginPage from './components/Auth/LoginPage';
+import AuthLayout from './layouts/AuthLayout';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
     path: '/admin',
     Component: AdminLayout,
     children: [{ path: 'dashboard', Component: AdminDashboard }],
+  },
+  {
+    path: '/auth',
+    Component: AuthLayout,
+    children: [
+      { path: 'login', Component: LoginPage },
+      // { path: 'register', Component: ProductsPage },
+    ],
   },
   {
     path: '*',

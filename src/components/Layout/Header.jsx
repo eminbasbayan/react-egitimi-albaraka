@@ -1,10 +1,14 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { BsCart } from 'react-icons/bs';
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
+import { AuthContext } from '../../context/AuthContext';
 
 const Header = () => {
   const { cartItems } = useContext(CartContext);
+  const { token, handleLogout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 shadow-sm backdrop-blur">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
@@ -46,6 +50,16 @@ const Header = () => {
                     {cartItems.length}
                   </span>
                 </NavLink>
+              </li>
+
+              <li>
+                {token ? (
+                  <button onClick={() => handleLogout()}>Çıkış Yap</button>
+                ) : (
+                  <button onClick={() => navigate('/auth/login')}>
+                    Giriş Yap
+                  </button>
+                )}
               </li>
             </ul>
           </nav>
