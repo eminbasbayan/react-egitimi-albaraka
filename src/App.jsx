@@ -10,6 +10,7 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import NotFoundPage from './pages/NotFoundPage';
 import LoginPage from './components/Auth/LoginPage';
 import AuthLayout from './layouts/AuthLayout';
+import ProductDetails from './pages/ProductDetails';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', Component: HomePage },
       { path: 'products', Component: ProductsPage },
+      { path: 'product/:productId', Component: ProductDetails },
       { path: 'cart', Component: CartPage },
     ],
   },
