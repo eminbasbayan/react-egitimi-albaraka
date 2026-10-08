@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+import { CounterContext } from '../context/CounterContext';
 
 function Counter() {
-  const [count, setCount] = useState(0);
+  const { count, setCount } = useContext(CounterContext);
 
   function arttir() {
     setCount(count + 1);
