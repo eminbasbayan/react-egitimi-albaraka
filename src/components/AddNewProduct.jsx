@@ -1,6 +1,28 @@
 import { useState } from 'react';
 import './AddNewProduct.css';
 import Button from './UI/Button';
+import ProductInput from './ProductInput';
+
+const productInputs = [
+  {
+    title: 'Ürün İsmi',
+    name: 'title',
+    type: 'text',
+    placeholder: 'Bir ürün ismi giriniz!',
+  },
+  {
+    title: 'Ürün Görseli',
+    name: 'imageURL',
+    type: 'text',
+    placeholder: 'Bir ürün görseli giriniz!',
+  },
+  {
+    title: 'Ürün Fiyatı',
+    name: 'price',
+    type: 'number',
+    placeholder: 'Bir ürün fiyatı giriniz!',
+  }
+];
 
 function AddNewProduct(props) {
   const [product, setProduct] = useState({
@@ -31,7 +53,7 @@ function AddNewProduct(props) {
       ...product,
       id: Math.random(),
       price: Number(product.price),
-      image: product.imageURL
+      image: product.imageURL,
     };
 
     props.handleNewProduct(newProduct);
@@ -40,33 +62,15 @@ function AddNewProduct(props) {
   return (
     <div className="add-new-product">
       <form onSubmit={handleSubmit}>
-        <label>
-          <b>Ürün ismi: {product.title}</b>
-          <input
-            type="text"
-            onChange={handleChange}
-            placeholder="Bir ürün ismi giriniz!"
-            name="title"
+        {productInputs.map((item) => (
+          <ProductInput
+            type={item.type}
+            handleChange={handleChange}
+            placeholder={item.placeholder}
+            title={item.title}
+            name={item.name}
           />
-        </label>
-        <label>
-          <b>Ürün görsel: {product.imageURL}</b>
-          <input
-            type="text"
-            onChange={handleChange}
-            placeholder="Bir ürün görsel giriniz!"
-            name="imageURL"
-          />
-        </label>
-        <label>
-          <b>Ürün fiyatı: {product.price} </b>
-          <input
-            type="number"
-            onChange={handleChange}
-            placeholder="Bir ürün fiyatı giriniz!"
-            name="price"
-          />
-        </label>
+        ))}
 
         <Button>Yeni Ürün Ekle</Button>
       </form>

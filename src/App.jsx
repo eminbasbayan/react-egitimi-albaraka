@@ -8,7 +8,6 @@ import MainLayout from './layouts/MainLayout';
 import AdminLayout from './layouts/AdminLayout';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import NotFoundPage from './pages/NotFoundPage';
-import Counter from './components/Counter';
 
 const router = createBrowserRouter([
   {
@@ -34,7 +33,6 @@ const router = createBrowserRouter([
 function App() {
   return (
     <Fragment>
-      <Counter />
       <RouterProvider router={router} />
       <ToastContainer autoClose={1000} />
     </Fragment>
