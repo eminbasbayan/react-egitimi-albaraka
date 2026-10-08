@@ -25,7 +25,7 @@ function ProductItem(props) {
 
       <div className="product-item-info">
         <b className="product-item-title">{product.title}</b>
-        <span>{product.price}₺  x {props.cart && props.quantity}</span>
+        <span>{product.price}₺   {props.cart && `x ${props.quantity}`}</span>
         {cart ? (
           <Button type="danger" onClick={()=> deleteFromCart(product.id)}>
             Sepetten Sil

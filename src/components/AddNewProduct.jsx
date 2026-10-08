@@ -21,7 +21,7 @@ const productInputs = [
     name: 'price',
     type: 'number',
     placeholder: 'Bir ürün fiyatı giriniz!',
-  }
+  },
 ];
 
 function AddNewProduct(props) {
@@ -30,6 +30,8 @@ function AddNewProduct(props) {
     imageURL: '',
     price: '',
   });
+
+  console.log(product);
 
   function handleChange({ target: { name, value } }) {
     // const { name, value } = target;
@@ -57,6 +59,12 @@ function AddNewProduct(props) {
     };
 
     props.handleNewProduct(newProduct);
+
+    setProduct({
+      title: '',
+      imageURL: '',
+      price: '',
+    });
   }
 
   return (
@@ -69,6 +77,8 @@ function AddNewProduct(props) {
             placeholder={item.placeholder}
             title={item.title}
             name={item.name}
+            key={item.name}
+            value={product[item.name]}
           />
         ))}
 
