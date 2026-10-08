@@ -2,16 +2,15 @@ import { toast } from 'react-toastify';
 import './ProductItem.css';
 import Button from './UI/Button';
 import { useContext } from 'react';
-import { CounterContext } from '../context/CounterContext';
+import { CartContext } from '../context/CartContext';
 
 function ProductItem(props) {
-  const { count } = useContext(CounterContext);
-
-  console.log(count);
+  const { setProducts, cart, ...product } = props;
+  const { addToCart, deleteFromCart } = useContext(CartContext);
 
   function handleDeleteItem() {
     if (window.confirm('Silmek istediğinize emin misiniz?')) {
-      props.setProducts(props.id);
+      setProducts(product.id);
 
       toast.success('Ürün başarıyla silindi!', {
         autoClose: 3000,
@@ -22,16 +21,25 @@ function ProductItem(props) {
 
   return (
     <div className="product-item">
-      <img src={props.imageURL} alt="Çanta Görseli" />
+      <img src={product.imageURL} alt={product.title} />
 
       <div className="product-item-info">
-        <b className="product-item-title">
-          {props.title} {count}
-        </b>
-        <span>{props.price}₺</span>
-        <Button type="danger" onClick={handleDeleteItem}>
-          Ürünü Sil
-        </Button>
+        <b className="product-item-title">{product.title}</b>
+        <span>{product.price}₺  x {props.cart && props.quantity}</span>
+        {cart ? (
+          <Button type="danger" onClick={()=> deleteFromCart(product.id)}>
+            Sepetten Sil
+          </Button>
+        ) : (
+          <>
+            <Button type="primary" onClick={() => addToCart(product)}>
+              Sepete Ekle
+            </Button>
+            <Button type="danger" onClick={handleDeleteItem}>
+              Ürünü Sil
+            </Button>
+          </>
+        )}
       </div>
     </div>
   );

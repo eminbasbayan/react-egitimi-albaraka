@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import { BsCart } from 'react-icons/bs';
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 
 const Header = () => {
+  const { cartItems } = useContext(CartContext);
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 shadow-sm backdrop-blur">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
@@ -40,7 +43,7 @@ const Header = () => {
                 >
                   <BsCart />
                   <span className="text-xs absolute bg-red-600 text-white w-3 h-3 flex items-center justify-center rounded-full text-center top-[-8px] right-[-6px]">
-                    0
+                    {cartItems.length}
                   </span>
                 </NavLink>
               </li>

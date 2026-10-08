@@ -36,7 +36,7 @@ function App() {
     <Fragment>
       <Counter />
       <RouterProvider router={router} />
-      <ToastContainer />
+      <ToastContainer autoClose={1000} />
     </Fragment>
   );
 }
