@@ -1,14 +1,16 @@
 import { createContext } from 'react';
 
-const CounterContext = createContext();
+export const CounterContext = createContext();
 
-function CounterProvider() {
+function CounterProvider(props) {
   return (
     <CounterContext.Provider
       value={{
         count: 0,
       }}
-    ></CounterContext.Provider>
+    >
+      {props.children}
+    </CounterContext.Provider>
   );
 }
 
